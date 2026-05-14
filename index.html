@@ -34,6 +34,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .sb-item.on.sr{color:var(--rep);border-left-color:var(--rep);}
 .sb-item.on.sv{color:var(--macro);border-left-color:var(--macro);}
 .sb-item.on.sho{color:var(--bna);border-left-color:var(--bna);}
+.sb-item.on.srub{color:#a78bfa;border-left-color:#a78bfa;}
+.sb-item.on.spd{color:#34d399;border-left-color:#34d399;}
 .sb-item.on.sm{color:#aaa;border-left-color:#aaa;}
 .sb-item.on.sn{color:var(--up);border-left-color:var(--up);}
 .sb-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;margin-left:auto;}
@@ -143,11 +145,129 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .ni{font-size:14px;flex-shrink:0;margin-top:1px;}.ntxt{color:var(--text2);}
 .ntxt strong{color:var(--text);}
 
+/* DAY BUTTONS */
+.day-btn{padding:7px 18px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:none;color:var(--text2);transition:all .15s;}
+.day-btn:hover{color:var(--text);}
+.day-btn.db-on{background:var(--bg3);color:var(--text);border-color:var(--border2);}
+
+/* ── MOBILE NAV ── */
+.mob-nav{display:none;}
+.mob-header{display:none;}
+.mob-sheet-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;backdrop-filter:blur(4px);}
+.mob-sheet{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border2);border-radius:20px 20px 0 0;z-index:400;padding:12px 0 env(safe-area-inset-bottom,16px);}
+.mob-sheet-handle{width:36px;height:4px;background:var(--bg4);border-radius:2px;margin:0 auto 16px;}
+.mob-sheet-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:0 20px 8px;}
+.mob-sheet-item{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:background .15s;}
+.mob-sheet-item:hover,.mob-sheet-item:active{background:rgba(255,255,255,.04);}
+.mob-sheet-item.on{color:var(--text);}
+
 ::-webkit-scrollbar{width:5px;height:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px;}
-@media(max-width:900px){.sidebar{display:none;}.layout{display:block;}.kg5,.kg3,.cmp3,.dch,.g2,.g3{grid-template-columns:1fr;}.pan{padding:16px;}.pg{grid-template-columns:repeat(3,1fr);}}
+
+@media(max-width:768px){
+  .sidebar{display:none!important;}
+  .layout{display:block;padding-bottom:72px;}
+  .content{overflow-y:visible;}
+  .pan{padding:14px 16px;}
+  .kg5,.kg3,.cmp3,.dch,.g2,.g3{grid-template-columns:1fr!important;}
+  .pg{grid-template-columns:repeat(3,1fr)!important;}
+
+  /* Mobile header */
+  .mob-header{
+    display:flex;align-items:center;justify-content:space-between;
+    position:sticky;top:0;z-index:100;
+    background:var(--bg2);border-bottom:1px solid var(--border);
+    padding:12px 16px;
+  }
+  .mob-header-left{display:flex;align-items:center;gap:10px;}
+  .mob-header-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6b7aff,#ffd666);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
+  .mob-header-title{font-size:14px;font-weight:600;}
+  .mob-header-sub{font-size:10px;color:var(--text2);}
+  .mob-header-badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:rgba(255,214,102,.18);color:#ffd666;border:1px solid rgba(255,214,102,.3);}
+
+  /* Bottom nav bar */
+  .mob-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;
+    background:var(--bg2);border-top:1px solid var(--border);
+    padding:0 4px env(safe-area-inset-bottom,0);
+    height:62px;
+  }
+  .mob-nav-item{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;padding:6px 2px;cursor:pointer;border:none;background:none;
+    color:var(--text3);font-size:9px;font-weight:600;letter-spacing:.03em;
+    text-transform:uppercase;transition:color .15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mob-nav-item .icon{font-size:18px;line-height:1;}
+  .mob-nav-item.on{color:var(--text);}
+  .mob-nav-item.on .nav-dot{display:block;}
+  .nav-dot{display:none;width:4px;height:4px;border-radius:50%;background:var(--text);margin:0 auto;margin-top:2px;}
+
+  /* Sheet */
+  .mob-sheet-overlay.open{display:block;}
+  .mob-sheet.open{display:block;}
+
+  /* Adjust KPI font sizes */
+  .kv{font-size:18px!important;}
+  .cf{font-size:20px!important;}
+  .dv{font-size:18px!important;}
+
+  /* Charts a bit shorter on mobile */
+  .cw canvas{max-height:220px;}
+
+  /* Day buttons wrap */
+  .day-btn{padding:6px 12px;font-size:11px;}
+}
 </style>
 </head>
 <body>
+
+<!-- ══════ MOBILE HEADER (hidden on desktop) ══════ -->
+<header class="mob-header">
+  <div class="mob-header-left">
+    <div class="mob-header-mark">HS</div>
+    <div>
+      <div class="mob-header-title" id="mob-page-title">Resumen general</div>
+      <div class="mob-header-sub">Hotsale 2026 · 3 días</div>
+    </div>
+  </div>
+  <span class="mob-header-badge">$270M acum.</span>
+</header>
+
+<!-- ══════ MOBILE BOTTOM NAV ══════ -->
+<nav class="mob-nav">
+  <button class="mob-nav-item on" onclick="swMob('ov',this,'Resumen general')">
+    <span class="icon">📊</span><span>Resumen</span><span class="nav-dot"></span>
+  </button>
+  <button class="mob-nav-item" onclick="swMob('hogar',this,'División Hogar')">
+    <span class="icon">🏠</span><span>Hogar</span><span class="nav-dot"></span>
+  </button>
+  <button class="mob-nav-item" onclick="swMob('bikes',this,'División Bikes')">
+    <span class="icon">🚲</span><span>Bikes</span><span class="nav-dot"></span>
+  </button>
+  <button class="mob-nav-item" onclick="swMob('hora',this,'Por hora')">
+    <span class="icon">🕐</span><span>Horas</span><span class="nav-dot"></span>
+  </button>
+  <button class="mob-nav-item" onclick="openSheet()">
+    <span class="icon">☰</span><span>Más</span><span class="nav-dot" id="more-dot"></span>
+  </button>
+</nav>
+
+<!-- ══════ MOBILE SHEET MENU ══════ -->
+<div class="mob-sheet-overlay" id="sheet-overlay" onclick="closeSheet()"></div>
+<div class="mob-sheet" id="mob-sheet">
+  <div class="mob-sheet-handle"></div>
+  <div class="mob-sheet-title">Dashboard</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('rep',this,'División Repuestos')">🔧 División Repuestos</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('vend',this,'Vendedores')">👤 Vendedores</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('rubros',this,'Rubros · Pedidos')">📦 Rubros · pedidos</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('platdiv',this,'Plataformas × División')">🔀 Plataformas × División</div>
+  <div class="mob-sheet-title" style="margin-top:8px;">Proyecto</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('method',this,'Metodología')">📐 Metodología</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('hist',this,'Historial')">🔄 Historial</div>
+  <div class="mob-sheet-item" onclick="swMobSheet('notas',this,'Notas')">📝 Notas pendientes</div>
+</div>
+
 <div class="layout">
 
 <!-- ══════ SIDEBAR ══════ -->
@@ -163,6 +283,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="sb-item sr"  onclick="sw('rep',this)">🔧 División Repuestos</div>
   <div class="sb-item sv"  onclick="sw('vend',this)">👤 Vendedores</div>
   <div class="sb-item sho" onclick="sw('hora',this)">🕐 Por hora</div>
+  <div class="sb-item srub" onclick="sw('rubros',this)">📦 Rubros · pedidos</div>
+  <div class="sb-item spd" onclick="sw('platdiv',this)">🔀 Plataformas x División</div>
   <div class="sb-section">Proyecto</div>
   <div class="sb-item sm"  onclick="sw('method',this)">📐 Metodología</div>
   <div class="sb-item sm"  onclick="sw('hist',this)">🔄 Historial</div>
@@ -508,6 +630,80 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
+
+<!-- ════ RUBROS · PEDIDOS ════ -->
+<div id="pan-rubros" class="pan">
+  <div class="page-title">Rubros — Pedidos y Facturación</div>
+  <div class="page-sub">Cantidad de pedidos y TOTNETO por rubro · selector de día interactivo</div>
+
+  <!-- Day selector -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="day-btn db-on" id="rb-d1" onclick="showRubros('d1')">Día 1</button>
+    <button class="day-btn" id="rb-d2" onclick="showRubros('d2')">Día 2</button>
+    <button class="day-btn" id="rb-d3" onclick="showRubros('d3')">Día 3</button>
+    <button class="day-btn" id="rb-all" onclick="showRubros('all')">Acumulado</button>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ct"><div class="dot" style="background:#a78bfa;"></div>Pedidos por rubro</div>
+      <div class="cw" style="height:340px;"><canvas id="rub-ped-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="ct"><div class="dot" style="background:#a78bfa;"></div>Facturación por rubro</div>
+      <div class="cw" style="height:340px;"><canvas id="rub-fac-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="mt14 card">
+    <div class="ct"><div class="dot" style="background:#a78bfa;"></div>Detalle completo por rubro</div>
+    <div id="rub-table"></div>
+  </div>
+</div>
+
+<!-- ════ PLATAFORMAS x DIVISIÓN ════ -->
+<div id="pan-platdiv" class="pan">
+  <div class="page-title">Plataformas × División</div>
+  <div class="page-sub">Pedidos y facturación por plataforma dentro de cada unidad de negocio · selector de día</div>
+
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="day-btn db-on" id="pd-d1" onclick="showPlatDiv('d1')">Día 1</button>
+    <button class="day-btn" id="pd-d2" onclick="showPlatDiv('d2')">Día 2</button>
+    <button class="day-btn" id="pd-d3" onclick="showPlatDiv('d3')">Día 3</button>
+    <button class="day-btn" id="pd-all" onclick="showPlatDiv('all')">Acumulado</button>
+  </div>
+
+  <!-- Hogar -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="ct"><div class="dot" style="background:var(--hogar);"></div>🏠 División Hogar</div>
+    <div class="g2">
+      <div><div class="cw" style="height:220px;"><canvas id="pd-hogar-ped"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Pedidos</div></div>
+      <div><div class="cw" style="height:220px;"><canvas id="pd-hogar-fac"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Facturación</div></div>
+    </div>
+    <div id="pd-hogar-table" style="margin-top:12px;"></div>
+  </div>
+
+  <!-- Bikes -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="ct"><div class="dot" style="background:var(--bikes);"></div>🚲 División Bikes</div>
+    <div class="g2">
+      <div><div class="cw" style="height:200px;"><canvas id="pd-bikes-ped"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Pedidos</div></div>
+      <div><div class="cw" style="height:200px;"><canvas id="pd-bikes-fac"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Facturación</div></div>
+    </div>
+    <div id="pd-bikes-table" style="margin-top:12px;"></div>
+  </div>
+
+  <!-- Repuestos -->
+  <div class="card">
+    <div class="ct"><div class="dot" style="background:var(--rep);"></div>🔧 División Repuestos</div>
+    <div class="g2">
+      <div><div class="cw" style="height:180px;"><canvas id="pd-rep-ped"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Pedidos</div></div>
+      <div><div class="cw" style="height:180px;"><canvas id="pd-rep-fac"></canvas></div><div style="text-align:center;font-size:11px;color:var(--text2);margin-top:6px;">Facturación</div></div>
+    </div>
+    <div id="pd-rep-table" style="margin-top:12px;"></div>
+  </div>
+</div>
+
 </main>
 </div>
 
@@ -517,6 +713,49 @@ function sw(id,el){
   document.querySelectorAll('.sb-item').forEach(t=>t.classList.remove('on'));
   document.getElementById('pan-'+id).classList.add('on');
   el.classList.add('on');
+}
+
+// Mobile nav helpers
+function swMob(id, el, title){
+  // Switch panel
+  document.querySelectorAll('.pan').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pan-'+id).classList.add('on');
+  // Update bottom nav active state
+  document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  // Clear "more" dot
+  document.getElementById('more-dot').style.display='none';
+  // Update header title
+  document.getElementById('mob-page-title').textContent=title;
+  // Scroll to top
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Also sync sidebar if visible
+  document.querySelectorAll('.sb-item').forEach(t=>t.classList.remove('on'));
+}
+
+function swMobSheet(id, el, title){
+  closeSheet();
+  document.querySelectorAll('.pan').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pan-'+id).classList.add('on');
+  // Mark bottom nav "more" as active
+  document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('on'));
+  const moreBtn = document.querySelector('.mob-nav-item:last-child');
+  moreBtn.classList.add('on');
+  document.getElementById('more-dot').style.display='block';
+  document.getElementById('mob-page-title').textContent=title;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openSheet(){
+  document.getElementById('sheet-overlay').classList.add('open');
+  document.getElementById('mob-sheet').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeSheet(){
+  document.getElementById('sheet-overlay').classList.remove('open');
+  document.getElementById('mob-sheet').classList.remove('open');
+  document.body.style.overflow='';
 }
 Chart.defaults.color='#8b90a0';
 Chart.defaults.borderColor='rgba(255,255,255,0.06)';
@@ -563,6 +802,249 @@ const d1f={0:6357804,1:1205942,8:276107,9:-104069,10:747893,11:3433273,12:162410
 const d2f={0:4115018,1:1040514,2:1494027,6:120383,7:998284,8:13740415,9:4707675,10:9005184,11:6903618,12:9994742,13:3346244,14:8979180,15:3262280,16:1742414,17:7220962,18:6844023,19:6208755,20:5859863,21:6206530,22:4029783,23:7464925};
 const d3f={0:6221080,1:1054480,2:277182,3:280488,4:796842,6:525256,7:498969,8:1018939,9:4754500,10:7296985,11:10588792,12:5899108,13:5987615,14:3844753,15:7713608,16:3917794,17:8475440};
 new Chart(document.getElementById('hora-fac'),{type:'line',data:{labels:hs.map(h=>h+'hs'),datasets:[{label:'D1',data:hs.map(h=>d1f[+h]||0),borderColor:'#6b7aff',backgroundColor:'rgba(107,122,255,.06)',borderWidth:1.8,pointRadius:2,pointBackgroundColor:'#6b7aff',fill:true,tension:0.3},{label:'D2',data:hs.map(h=>d2f[+h]||0),borderColor:'#ff6b9d',backgroundColor:'rgba(255,107,157,.06)',borderWidth:1.8,pointRadius:2,pointBackgroundColor:'#ff6b9d',fill:true,tension:0.3},{label:'D3',data:hs.map(h=>d3f[+h]||0),borderColor:'#ffd666',backgroundColor:'rgba(255,214,102,.06)',borderWidth:1.8,pointRadius:2,pointBackgroundColor:'#ffd666',fill:true,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+(c.raw/1e6).toFixed(2)+'M'}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{callback:v=>v<0?'—':'$'+(v/1e6).toFixed(0)+'M',font:{size:10}}}}}});
+
+// ══════════════════════════════════════════════
+// RUBROS DATA
+// ══════════════════════════════════════════════
+const RUBROS = {
+  d1: [
+    {div:'Hogar', rubro:'TELEVISORES Y VIDEO',           ped:131, fac:45630110},
+    {div:'Hogar', rubro:'CALEFACCIÓN',                   ped:19,  fac:5039714},
+    {div:'Hogar', rubro:'LAVARROPAS Y SECARROPAS',       ped:13,  fac:4744291},
+    {div:'Hogar', rubro:'PEQUEÑOS ELECTRODOMÉSTICOS',    ped:14,  fac:2501089},
+    {div:'Hogar', rubro:'COLCHONES Y SOMMIERS',          ped:10,  fac:2918388},
+    {div:'Hogar', rubro:'HELADERAS Y FREEZERS',          ped:3,   fac:2470803},
+    {div:'Hogar', rubro:'COCINAS, HORNOS Y MICROONDAS',  ped:5,   fac:2179021},
+    {div:'Hogar', rubro:'AIRES Y VENTILACIÓN',           ped:1,   fac:928741},
+    {div:'Hogar', rubro:'MUEBLES',                       ped:2,   fac:344867},
+    {div:'Hogar', rubro:'AUDIO',                         ped:1,   fac:54479},
+    {div:'Bikes', rubro:'BIKES - BICICLETAS',            ped:22,  fac:20347765},
+    {div:'Bikes', rubro:'BIKES - REPUESTOS',             ped:3,   fac:82262},
+    {div:'Bikes', rubro:'BIKE-GENERAL',                  ped:3,   fac:42580},
+    {div:'Bikes', rubro:'BIKES - ACCESORIOS',            ped:1,   fac:5529},
+    {div:'Bikes', rubro:'BIKES - INDUMENTARIA',          ped:1,   fac:5033},
+    {div:'Repuestos', rubro:'INDUMENTARIA',              ped:4,   fac:191143},
+    {div:'Repuestos', rubro:'MOTOR',                     ped:1,   fac:56273},
+  ],
+  d2: [
+    {div:'Hogar', rubro:'TELEVISORES Y VIDEO',           ped:118, fac:41401547},
+    {div:'Hogar', rubro:'LAVARROPAS Y SECARROPAS',       ped:23,  fac:12992623},
+    {div:'Hogar', rubro:'COLCHONES Y SOMMIERS',          ped:30,  fac:6852091},
+    {div:'Hogar', rubro:'CALEFACCIÓN',                   ped:31,  fac:6670666},
+    {div:'Hogar', rubro:'HELADERAS Y FREEZERS',          ped:7,   fac:6020957},
+    {div:'Hogar', rubro:'AIRES Y VENTILACIÓN',           ped:3,   fac:3932131},
+    {div:'Hogar', rubro:'CELULARES / TABLETS',           ped:4,   fac:2374603},
+    {div:'Hogar', rubro:'PEQUEÑOS ELECTRODOMÉSTICOS',    ped:12,  fac:1866137},
+    {div:'Hogar', rubro:'MUEBLES',                       ped:7,   fac:1732174},
+    {div:'Hogar', rubro:'COCINAS, HORNOS Y MICROONDAS',  ped:4,   fac:1176821},
+    {div:'Hogar', rubro:'BOSQUES Y JARDINES',            ped:1,   fac:811322},
+    {div:'Bikes', rubro:'BIKES - BICICLETAS',            ped:30,  fac:25400894},
+    {div:'Bikes', rubro:'BIKES - INDUMENTARIA',          ped:4,   fac:226000},
+    {div:'Bikes', rubro:'BIKES - REPUESTOS',             ped:1,   fac:100736},
+    {div:'Bikes', rubro:'BIKES - ACCESORIOS',            ped:3,   fac:65808},
+    {div:'Repuestos', rubro:'INDUMENTARIA',              ped:4,   fac:1268948},
+    {div:'Repuestos', rubro:'ACCESORIOS',                ped:2,   fac:168277},
+    {div:'Repuestos', rubro:'ELECTRICIDAD',              ped:2,   fac:132604},
+    {div:'Repuestos', rubro:'TRANSMISIÓN',               ped:1,   fac:24861},
+    {div:'Repuestos', rubro:'CHASIS',                    ped:1,   fac:23630},
+    {div:'Repuestos', rubro:'MOTOR',                     ped:1,   fac:8423},
+    {div:'Repuestos', rubro:'FRENOS',                    ped:1,   fac:8135},
+  ],
+  d3: [
+    {div:'Hogar', rubro:'TELEVISORES Y VIDEO',           ped:80,  fac:28232669},
+    {div:'Hogar', rubro:'AIRES Y VENTILACIÓN',           ped:7,   fac:7907088},
+    {div:'Hogar', rubro:'LAVARROPAS Y SECARROPAS',       ped:12,  fac:6723421},
+    {div:'Hogar', rubro:'HELADERAS Y FREEZERS',          ped:7,   fac:5994845},
+    {div:'Hogar', rubro:'COLCHONES Y SOMMIERS',          ped:19,  fac:5396045},
+    {div:'Hogar', rubro:'CALEFACCIÓN',                   ped:16,  fac:3231432},
+    {div:'Hogar', rubro:'COCINAS, HORNOS Y MICROONDAS',  ped:9,   fac:1434359},
+    {div:'Hogar', rubro:'PEQUEÑOS ELECTRODOMÉSTICOS',    ped:6,   fac:1326503},
+    {div:'Hogar', rubro:'CELULARES / TABLETS',           ped:1,   fac:891397},
+    {div:'Hogar', rubro:'EQUIPAMIENTO COMERCIAL',        ped:1,   fac:484950},
+    {div:'Bikes', rubro:'BIKES - BICICLETAS',            ped:12,  fac:7747277},
+    {div:'Bikes', rubro:'BIKES - INDUMENTARIA',          ped:1,   fac:99413},
+    {div:'Repuestos', rubro:'MOTOR',                     ped:1,   fac:57184},
+  ]
+};
+// Build 'all' by merging
+(()=>{
+  const merged={};
+  ['d1','d2','d3'].forEach(d=>{
+    RUBROS[d].forEach(r=>{
+      const k=r.div+'||'+r.rubro;
+      if(!merged[k]) merged[k]={div:r.div,rubro:r.rubro,ped:0,fac:0};
+      merged[k].ped+=r.ped; merged[k].fac+=r.fac;
+    });
+  });
+  RUBROS.all=Object.values(merged).sort((a,b)=>b.fac-a.fac);
+})();
+
+// Chart instances for rubros
+let rubPedChart=null, rubFacChart=null;
+
+function showRubros(day){
+  // Update buttons
+  ['d1','d2','d3','all'].forEach(d=>{
+    document.getElementById('rb-'+d).classList.toggle('db-on', d===day);
+  });
+  const data = RUBROS[day].slice().sort((a,b)=>b.fac-a.fac);
+  const labels = data.map(r=>r.rubro.length>22?r.rubro.slice(0,22)+'…':r.rubro);
+  const colors = data.map(r=>r.div==='Hogar'?'#4a9eff':r.div==='Bikes'?'#4ecb71':'#f5a623');
+
+  const pedData = data.map(r=>r.ped);
+  const facData = data.map(r=>+(r.fac/1e6).toFixed(2));
+
+  const chartOpts = (isF)=>({responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>isF?' $'+c.raw.toFixed(1)+'M':' '+c.raw+' pedidos'}}},scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{font:{size:10},color:'#8b90a0'}},y:{grid:{display:false},ticks:{font:{size:10},color:'#8b90a0'}}}});
+
+  if(rubPedChart) rubPedChart.destroy();
+  rubPedChart = new Chart(document.getElementById('rub-ped-chart'),{type:'bar',data:{labels,datasets:[{data:pedData,backgroundColor:colors,borderWidth:0,borderRadius:3}]},options:chartOpts(false)});
+
+  if(rubFacChart) rubFacChart.destroy();
+  rubFacChart = new Chart(document.getElementById('rub-fac-chart'),{type:'bar',data:{labels,datasets:[{data:facData,backgroundColor:colors,borderWidth:0,borderRadius:3}]},options:chartOpts(true)});
+
+  // Table
+  const tbl = document.getElementById('rub-table');
+  const maxFac = Math.max(...data.map(r=>r.fac));
+  const divColor = {Hogar:'#4a9eff',Bikes:'#4ecb71',Repuestos:'#f5a623'};
+  tbl.innerHTML = `<div style="display:grid;grid-template-columns:auto 1fr 60px 60px 80px;gap:6px 12px;font-size:11px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);color:#8b90a0;font-weight:600;">
+    <span>Div.</span><span>Rubro</span><span style="text-align:right">Pedidos</span><span style="text-align:right">% ped.</span><span style="text-align:right">Facturación</span></div>`+
+  data.map(r=>{
+    const totPed=data.reduce((s,x)=>s+x.ped,0);
+    const pct=((r.ped/totPed)*100).toFixed(1);
+    const barW=((r.fac/maxFac)*100).toFixed(0);
+    return `<div style="display:grid;grid-template-columns:auto 1fr 60px 60px 80px;gap:6px 12px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:${divColor[r.div]||'#888'};display:inline-block;flex-shrink:0;"></span>
+      <span style="color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.rubro}</span>
+      <span style="text-align:right;font-family:'DM Mono',monospace;font-weight:600;">${r.ped}</span>
+      <span style="text-align:right;color:#8b90a0;">${pct}%</span>
+      <span style="text-align:right;font-family:'DM Mono',monospace;font-weight:600;color:${divColor[r.div]||'#888'};">$${(r.fac/1e6).toFixed(2)}M</span>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════
+// PLATAFORMAS x DIVISIÓN DATA
+// ══════════════════════════════════════════════
+const PLATDIV = {
+  d1:{
+    Hogar:   [{p:'ML',ped:112,fac:31788844},{p:'BNA',ped:26,fac:16281788},{p:'VTEX',ped:37,fac:9998437},{p:'MACRO',ped:16,fac:6323579},{p:'AS',ped:7,fac:2418857}],
+    Bikes:   [{p:'VTEX',ped:8,fac:7638248},{p:'BNA',ped:8,fac:6911134},{p:'MACRO',ped:7,fac:5000113},{p:'AS',ped:2,fac:860413},{p:'ML',ped:2,fac:73262}],
+    Repuestos:[{p:'VTEX',ped:4,fac:459866},{p:'ML',ped:2,fac:-202526}],
+  },
+  d2:{
+    Hogar:   [{p:'VTEX',ped:109,fac:32885480},{p:'ML',ped:79,fac:23839882},{p:'BNA',ped:23,fac:14493894},{p:'MACRO',ped:18,fac:10917233},{p:'AS',ped:11,fac:3720014}],
+    Bikes:   [{p:'BNA',ped:15,fac:10230836},{p:'VTEX',ped:13,fac:6721316},{p:'MACRO',ped:5,fac:6269083},{p:'AS',ped:3,fac:2572201}],
+    Repuestos:[{p:'ML',ped:3,fac:938809},{p:'VTEX',ped:6,fac:552056},{p:'BNA',ped:1,fac:120383},{p:'AS',ped:1,fac:23630}],
+  },
+  d3:{
+    Hogar:   [{p:'VTEX',ped:67,fac:24649922},{p:'ML',ped:54,fac:12845088},{p:'BNA',ped:19,fac:12230345},{p:'MACRO',ped:14,fac:8552353},{p:'AS',ped:6,fac:2970246}],
+    Bikes:   [{p:'VTEX',ped:7,fac:4025119},{p:'BNA',ped:5,fac:3452541},{p:'MACRO',ped:1,fac:369031}],
+    Repuestos:[{p:'ML',ped:1,fac:57184}],
+  }
+};
+// Build all by merging
+(()=>{
+  const merge=(div)=>{
+    const m={};
+    ['d1','d2','d3'].forEach(d=>{
+      (PLATDIV[d][div]||[]).forEach(r=>{
+        if(!m[r.p]) m[r.p]={p:r.p,ped:0,fac:0};
+        m[r.p].ped+=r.ped; m[r.p].fac+=r.fac;
+      });
+    });
+    return Object.values(m).sort((a,b)=>b.fac-a.fac);
+  };
+  PLATDIV.all={Hogar:merge('Hogar'),Bikes:merge('Bikes'),Repuestos:merge('Repuestos')};
+})();
+
+const PLAT_COLORS = {ML:'#4a9eff',VTEX:'#4ecb71',BNA:'#f5a623',MACRO:'#b88cff',AS:'#ff7058'};
+let pdCharts = {};
+
+function buildPlatDivSection(div, day){
+  const data = (PLATDIV[day][div]||[]).slice().sort((a,b)=>b.fac-a.fac);
+  const slug  = div.toLowerCase().replace(/[^a-z]/g,'');
+  const colors= data.map(r=>PLAT_COLORS[r.p]||'#888');
+
+  if(pdCharts[slug+'ped']) pdCharts[slug+'ped'].destroy();
+  pdCharts[slug+'ped'] = new Chart(document.getElementById('pd-'+slug+'-ped'),{
+    type:'bar',
+    data:{labels:data.map(r=>r.p),datasets:[{data:data.map(r=>r.ped),backgroundColor:colors,borderWidth:0,borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.raw+' pedidos'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#8b90a0'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{font:{size:10},color:'#8b90a0'}}}}
+  });
+
+  if(pdCharts[slug+'fac']) pdCharts[slug+'fac'].destroy();
+  pdCharts[slug+'fac'] = new Chart(document.getElementById('pd-'+slug+'-fac'),{
+    type:'bar',
+    data:{labels:data.map(r=>r.p),datasets:[{data:data.map(r=>+(r.fac/1e6).toFixed(2)),backgroundColor:colors,borderWidth:0,borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+c.raw.toFixed(1)+'M'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#8b90a0'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{callback:v=>'$'+v+'M',font:{size:10},color:'#8b90a0'}}}}
+  });
+
+  // Table
+  const tbl = document.getElementById('pd-'+slug+'-table');
+  const totPed=data.reduce((s,r)=>s+r.ped,0);
+  const totFac=data.reduce((s,r)=>s+r.fac,0);
+  tbl.innerHTML = `<div style="display:grid;grid-template-columns:auto 1fr 60px 70px 90px 70px;gap:6px 10px;font-size:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);color:#8b90a0;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">
+    <span></span><span>Plataforma</span><span style="text-align:right">Pedidos</span><span style="text-align:right">% ped.</span><span style="text-align:right">Facturación</span><span style="text-align:right">% fac.</span></div>`+
+  data.map(r=>{
+    const pPed=((r.ped/totPed)*100).toFixed(1);
+    const pFac=((r.fac/totFac)*100).toFixed(1);
+    return `<div style="display:grid;grid-template-columns:auto 1fr 60px 70px 90px 70px;gap:6px 10px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;">
+      <span style="width:8px;height:8px;border-radius:2px;background:${PLAT_COLORS[r.p]||'#888'};display:inline-block;"></span>
+      <span style="font-weight:600;color:var(--text);">${r.p}</span>
+      <span style="text-align:right;font-family:'DM Mono',monospace;font-weight:600;">${r.ped}</span>
+      <span style="text-align:right;color:#8b90a0;">${pPed}%</span>
+      <span style="text-align:right;font-family:'DM Mono',monospace;font-weight:600;color:${PLAT_COLORS[r.p]||'#888'};">$${(r.fac/1e6).toFixed(2)}M</span>
+      <span style="text-align:right;color:#8b90a0;">${pFac}%</span>
+    </div>`;
+  }).join('')+
+  `<div style="display:grid;grid-template-columns:auto 1fr 60px 70px 90px 70px;gap:6px 10px;padding:8px 0 2px;font-size:11px;font-weight:700;border-top:1px solid rgba(255,255,255,.1);margin-top:2px;">
+    <span></span><span style="color:#8b90a0;">Total</span>
+    <span style="text-align:right;font-family:'DM Mono',monospace;">${totPed}</span>
+    <span></span>
+    <span style="text-align:right;font-family:'DM Mono',monospace;">$${(totFac/1e6).toFixed(2)}M</span>
+    <span></span>
+  </div>`;
+}
+
+function showPlatDiv(day){
+  ['d1','d2','d3','all'].forEach(d=>{
+    document.getElementById('pd-'+d).classList.toggle('db-on', d===day);
+  });
+  ['Hogar','Bikes','Repuestos'].forEach(div=>buildPlatDivSection(div,day));
+}
+
+// Lazy init flags — charts only render when the panel is first made visible
+let rubrosInited = false;
+let platdivInited = false;
+
+// Patch sw() and swMob() to trigger lazy init
+const _origSw = sw;
+function sw(id, el){
+  _origSw(id, el);
+  triggerLazyInit(id);
+}
+function triggerLazyInit(id){
+  if(id === 'rubros' && !rubrosInited){
+    rubrosInited = true;
+    setTimeout(()=>showRubros('d1'), 50);
+  }
+  if(id === 'platdiv' && !platdivInited){
+    platdivInited = true;
+    setTimeout(()=>showPlatDiv('d1'), 50);
+  }
+}
+
+// Also hook mobile nav
+const _origSwMob = swMob;
+function swMob(id, el, title){
+  _origSwMob(id, el, title);
+  triggerLazyInit(id);
+}
+const _origSwMobSheet = swMobSheet;
+function swMobSheet(id, el, title){
+  _origSwMobSheet(id, el, title);
+  triggerLazyInit(id);
+}
 </script>
 </body>
 </html>
