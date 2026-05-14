@@ -713,37 +713,33 @@ function sw(id,el){
   document.querySelectorAll('.sb-item').forEach(t=>t.classList.remove('on'));
   document.getElementById('pan-'+id).classList.add('on');
   el.classList.add('on');
+  triggerLazyInit(id);
 }
 
 // Mobile nav helpers
 function swMob(id, el, title){
-  // Switch panel
   document.querySelectorAll('.pan').forEach(p=>p.classList.remove('on'));
   document.getElementById('pan-'+id).classList.add('on');
-  // Update bottom nav active state
   document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
-  // Clear "more" dot
   document.getElementById('more-dot').style.display='none';
-  // Update header title
   document.getElementById('mob-page-title').textContent=title;
-  // Scroll to top
   window.scrollTo({top:0,behavior:'smooth'});
-  // Also sync sidebar if visible
   document.querySelectorAll('.sb-item').forEach(t=>t.classList.remove('on'));
+  triggerLazyInit(id);
 }
 
 function swMobSheet(id, el, title){
   closeSheet();
   document.querySelectorAll('.pan').forEach(p=>p.classList.remove('on'));
   document.getElementById('pan-'+id).classList.add('on');
-  // Mark bottom nav "more" as active
   document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('on'));
   const moreBtn = document.querySelector('.mob-nav-item:last-child');
   moreBtn.classList.add('on');
   document.getElementById('more-dot').style.display='block';
   document.getElementById('mob-page-title').textContent=title;
   window.scrollTo({top:0,behavior:'smooth'});
+  triggerLazyInit(id);
 }
 
 function openSheet(){
@@ -1013,16 +1009,10 @@ function showPlatDiv(day){
   ['Hogar','Bikes','Repuestos'].forEach(div=>buildPlatDivSection(div,day));
 }
 
-// Lazy init flags — charts only render when the panel is first made visible
+// Lazy init flags
 let rubrosInited = false;
 let platdivInited = false;
 
-// Patch sw() and swMob() to trigger lazy init
-const _origSw = sw;
-function sw(id, el){
-  _origSw(id, el);
-  triggerLazyInit(id);
-}
 function triggerLazyInit(id){
   if(id === 'rubros' && !rubrosInited){
     rubrosInited = true;
@@ -1032,18 +1022,6 @@ function triggerLazyInit(id){
     platdivInited = true;
     setTimeout(()=>showPlatDiv('d1'), 50);
   }
-}
-
-// Also hook mobile nav
-const _origSwMob = swMob;
-function swMob(id, el, title){
-  _origSwMob(id, el, title);
-  triggerLazyInit(id);
-}
-const _origSwMobSheet = swMobSheet;
-function swMobSheet(id, el, title){
-  _origSwMobSheet(id, el, title);
-  triggerLazyInit(id);
 }
 </script>
 </body>
