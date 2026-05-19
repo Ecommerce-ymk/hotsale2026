@@ -390,45 +390,123 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <div id="pan-hogar" class="pan">
   <div class="page-title">División Hogar — DH</div>
   <div class="page-sub">Televisores, Lavarropas, Heladeras, Calefacción, Aires, Colchones y más</div>
+
+  <!-- KPIs por día -->
   <div class="dch" style="grid-template-columns:repeat(4,1fr);">
     <div class="dc d1"><div class="dl" style="color:var(--d1);">Día 1 · Cerrado</div><div class="dv" style="color:var(--d1);">$66.8M</div><div class="dm">198 ped · ticket $338K · ML lidera</div></div>
     <div class="dc d2"><div class="dl" style="color:var(--d2);">Día 2 · Cerrado</div><div class="dv" style="color:var(--d2);">$85.9M</div><div class="dm">240 ped · ticket $358K · VTEX lidera</div></div>
     <div class="dc d3"><div class="dl" style="color:var(--d3);">Día 3 · Cerrado</div><div class="dv" style="color:var(--d3);">$101.8M</div><div class="dm">260 ped · ticket $392K · VTEX lidera</div></div>
     <div class="dc" style="border-top:3px solid var(--up);"><div class="dl" style="color:var(--up);">HotWeek · Cerrado</div><div class="dv" style="color:var(--up);">$104.8M</div><div class="dm">298 ped · ticket $352K · ML lidera</div></div>
   </div>
+
+  <!-- Acumulado Hogar banner -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;">
+    <div style="background:var(--bg3);border-radius:var(--r);border:1px solid var(--hogar);padding:14px 16px;grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+      <div style="border-right:1px solid var(--border);padding:0 16px 0 0;">
+        <div style="font-size:10px;color:var(--hogar);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:5px;">Hogar · Acumulado total</div>
+        <div style="font-size:26px;font-weight:700;color:var(--text);">$359.3M</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px;">76.5% del evento completo</div>
+      </div>
+      <div style="border-right:1px solid var(--border);padding:0 16px;">
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;">Pedidos únicos</div>
+        <div style="font-size:22px;font-weight:700;color:var(--text);">996</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px;">ticket prom. $361K</div>
+      </div>
+      <div style="border-right:1px solid var(--border);padding:0 16px;">
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;">Unidades vendidas</div>
+        <div style="font-size:22px;font-weight:700;color:var(--text);">1.033</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px;">promedio 1.04 u/pedido</div>
+      </div>
+      <div style="padding:0 16px;">
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;">Canal líder</div>
+        <div style="font-size:22px;font-weight:700;color:var(--hogar);">VTEX</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px;">$115.2M · 362 pedidos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rubros chart + Acumulado rubros tabla -->
   <div class="g2">
     <div class="card">
-      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Rubros · 3 días</div>
+      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Rubros · Facturación por período</div>
       <div class="cw" style="height:260px;"><canvas id="hogar-rub"></canvas></div>
       <div class="leg"><span><div class="ld" style="background:var(--d1);"></div>D1</span><span><div class="ld" style="background:var(--d2);"></div>D2</span><span><div class="ld" style="background:var(--d3);"></div>D3</span><span><div class="ld" style="background:var(--up);"></div>HotWeek</span></div>
     </div>
     <div class="card">
-      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Top 5 por día</div>
-      <div style="font-size:10px;color:var(--d1);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;">Día 1</div>
-      <div class="tr"><span class="tnum">1</span><span class="tn">TV BGH 50" GTV LED B5026UG6G</span><span class="tv2">$9.54M</span></div>
-      <div class="tr"><span class="tnum">2</span><span class="tn">TV Noblex 43" Smart FHD Android DR43X7180</span><span class="tv2">$9.08M</span></div>
-      <div class="tr"><span class="tnum">3</span><span class="tn">TV Noblex 32" Smart Android DV32X7080</span><span class="tv2">$4.88M</span></div>
-      <div class="sep"></div>
-      <div style="font-size:10px;color:var(--d2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;">Día 2</div>
-      <div class="tr"><span class="tnum">1</span><span class="tn">TV Noblex 43" Smart FHD Android DR43X7180</span><span class="tv2">$8.02M</span></div>
-      <div class="tr"><span class="tnum">2</span><span class="tn">Lavasecarropas Midea Inverter 12kg/8kg</span><span class="tv2">$5.95M</span></div>
-      <div class="tr"><span class="tnum">3</span><span class="tn">TV Noblex 32" Smart Android DV32X7080</span><span class="tv2">$5.41M</span></div>
-      <div class="sep"></div>
-      <div style="font-size:10px;color:var(--d3);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;">Día 3</div>
-      <div class="tr"><span class="tnum">1</span><span class="tn">TV Noblex 58" Smart LED Android 4K UHD</span><span class="tv2">$7.70M</span></div>
-      <div class="tr"><span class="tnum">2</span><span class="tn">AA Carrier Split Inverter 3600W</span><span class="tv2">$7.28M</span></div>
-      <div class="tr"><span class="tnum">3</span><span class="tn">TV Noblex 32" Smart Android DV32X7080</span><span class="tv2">$5.19M</span></div>
-      <div class="mt14">
-        <div class="ct" style="margin-bottom:9px;"><div class="dot" style="background:var(--hogar);"></div>Plataformas · Día 3</div>
-        <div class="pg">
-          <div class="pp"><div class="pv" style="color:var(--ml);">$35.3M</div><div class="pl">ML·112</div></div>
-          <div class="pp"><div class="pv" style="color:var(--vtex);">$32.0M</div><div class="pl">VTEX·104</div></div>
-          <div class="pp"><div class="pv" style="color:var(--bna);">$17.8M</div><div class="pl">BNA·38</div></div>
-          <div class="pp"><div class="pv" style="color:var(--macro);">$11.2M</div><div class="pl">MACRO·19</div></div>
-          <div class="pp"><div class="pv" style="color:var(--as);">$8.5M</div><div class="pl">V.Asist.·25</div></div>
-        </div>
+      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Rubros · Acumulado total — pedidos, unidades y facturación</div>
+      <!-- header -->
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:4px 0 6px;border-bottom:1px solid var(--border);">
+        <span>Rubro</span><span style="text-align:right">Ped.</span><span style="text-align:right">Unid.</span><span style="text-align:right">Facturación</span>
       </div>
-      <div class="mt14 ins">Aires y Ventilación escala a $13.6M en D3, siendo el segundo rubro del día. TV Noblex 58" es el producto #1 con $7.7M. TV sigue siendo el rubro dominante pero baja del 68% (D1) al 44% (D3).</div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);font-weight:500;">Televisores y Video</span><span style="text-align:right;color:var(--text2);">514</span><span style="text-align:right;color:var(--text2);">516</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;color:var(--hogar);">$185.0M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Lavarropas y Secarropas</span><span style="text-align:right;color:var(--text2);">67</span><span style="text-align:right;color:var(--text2);">65</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$30.6M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Heladeras y Freezers</span><span style="text-align:right;color:var(--text2);">33</span><span style="text-align:right;color:var(--text2);">33</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$27.5M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Colchones y Sommiers</span><span style="text-align:right;color:var(--text2);">107</span><span style="text-align:right;color:var(--text2);">120</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$26.5M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Calefacción</span><span style="text-align:right;color:var(--text2);">111</span><span style="text-align:right;color:var(--text2);">124</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$25.6M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Aires y Ventilación</span><span style="text-align:right;color:var(--text2);">23</span><span style="text-align:right;color:var(--text2);">27</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$25.1M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Peq. Electrodomésticos</span><span style="text-align:right;color:var(--text2);">66</span><span style="text-align:right;color:var(--text2);">66</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$11.5M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Cocinas, Hornos y Microondas</span><span style="text-align:right;color:var(--text2);">33</span><span style="text-align:right;color:var(--text2);">33</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$10.6M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Muebles</span><span style="text-align:right;color:var(--text2);">23</span><span style="text-align:right;color:var(--text2);">26</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$5.8M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Celulares / Tablets</span><span style="text-align:right;color:var(--text2);">7</span><span style="text-align:right;color:var(--text2);">7</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$4.5M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;">
+        <span style="color:var(--text);">Bosques y Jardines</span><span style="text-align:right;color:var(--text2);">5</span><span style="text-align:right;color:var(--text2);">5</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$3.7M</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:6px 0;font-size:11px;">
+        <span style="color:var(--text);">Otros (Equipam., Audio, etc.)</span><span style="text-align:right;color:var(--text2);">11</span><span style="text-align:right;color:var(--text2);">11</span><span style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;">$3.1M</span>
+      </div>
+      <!-- Total row -->
+      <div style="display:grid;grid-template-columns:1fr 48px 52px 70px;gap:4px 8px;align-items:center;padding:8px 0 2px;border-top:1px solid var(--border);margin-top:4px;font-size:11px;font-weight:700;">
+        <span style="color:var(--text2);">Total Hogar</span>
+        <span style="text-align:right;font-family:'DM Mono',monospace;">996</span>
+        <span style="text-align:right;font-family:'DM Mono',monospace;">1.033</span>
+        <span style="text-align:right;font-family:'DM Mono',monospace;color:var(--hogar);">$359.3M</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plataformas acumulado + Top productos acumulado -->
+  <div class="mt14 g2">
+    <div class="card">
+      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Plataformas · Acumulado total</div>
+      <div class="tr"><span class="tnum">1</span><span class="tn" style="font-weight:600;">VTEX</span><span class="tped">362 ped.</span><div class="bt"><div class="bf" style="width:100%;background:var(--vtex);"></div></div><span class="tv2">$115.2M</span></div>
+      <div class="tr"><span class="tnum">2</span><span class="tn">ML</span><span class="tped">388 ped.</span><div class="bt"><div class="bf" style="width:97.1%;background:var(--ml);"></div></div><span class="tv2">$111.8M</span></div>
+      <div class="tr"><span class="tnum">3</span><span class="tn">BNA</span><span class="tped">122 ped.</span><div class="bt"><div class="bf" style="width:64.1%;background:var(--bna);"></div></div><span class="tv2">$73.9M</span></div>
+      <div class="tr"><span class="tnum">4</span><span class="tn">MACRO</span><span class="tped">71 ped.</span><div class="bt"><div class="bf" style="width:34.2%;background:var(--macro);"></div></div><span class="tv2">$39.5M</span></div>
+      <div class="tr"><span class="tnum">5</span><span class="tn">Ventas Asistidas</span><span class="tped">53 ped.</span><div class="bt"><div class="bf" style="width:16.4%;background:var(--as);"></div></div><span class="tv2">$18.9M</span></div>
+      <div class="mt14 ins">VTEX lidera en facturación ($115.2M) pero ML lidera en cantidad de pedidos (388). BNA es el tercer canal con $73.9M concentrado principalmente en los primeros días del Hotsale.</div>
+    </div>
+    <div class="card">
+      <div class="ct"><div class="dot" style="background:var(--hogar);"></div>Top 10 productos · Acumulado total</div>
+      <div class="tr"><span class="tnum">1</span><span class="tn">TV Noblex 32" Smart Android DV32X7080</span><div class="bt"><div class="bf" style="width:100%;background:var(--hogar);"></div></div><span class="tv2">$22.2M</span></div>
+      <div class="tr"><span class="tnum">2</span><span class="tn">TV Noblex 43" Smart FHD Android DR43X7180</span><div class="bt"><div class="bf" style="width:89.8%;background:var(--hogar);"></div></div><span class="tv2">$19.9M</span></div>
+      <div class="tr"><span class="tnum">3</span><span class="tn">TV LG 50" Smart AI ThinQ UHD 50UA8050PSA</span><div class="bt"><div class="bf" style="width:73.1%;background:#85b7ff;"></div></div><span class="tv2">$16.3M</span></div>
+      <div class="tr"><span class="tnum">4</span><span class="tn">TV Noblex 58" Smart LED Android 4K UHD</span><div class="bt"><div class="bf" style="width:67.5%;background:#85b7ff;"></div></div><span class="tv2">$15.0M</span></div>
+      <div class="tr"><span class="tnum">5</span><span class="tn">TV BGH 50" GTV LED B5026UG6G</span><div class="bt"><div class="bf" style="width:65.5%;background:#85b7ff;"></div></div><span class="tv2">$14.6M</span></div>
+      <div class="tr"><span class="tnum">6</span><span class="tn">TV RCA 32" Smart Google TV R32GL100-F</span><div class="bt"><div class="bf" style="width:59.5%;background:#85b7ff;"></div></div><span class="tv2">$13.2M</span></div>
+      <div class="tr"><span class="tnum">7</span><span class="tn">TV Samsung 43" Smart UHD 4K UN43CU7000</span><div class="bt"><div class="bf" style="width:48.7%;background:#85b7ff;"></div></div><span class="tv2">$10.8M</span></div>
+      <div class="tr"><span class="tnum">8</span><span class="tn">TV TCL 55" Google 4K UHD 55V6CF</span><div class="bt"><div class="bf" style="width:41.6%;background:#85b7ff;"></div></div><span class="tv2">$9.3M</span></div>
+      <div class="tr"><span class="tnum">9</span><span class="tn">TV Noblex 50" Smart 4K UHD Google</span><div class="bt"><div class="bf" style="width:33.9%;background:#4a4480;"></div></div><span class="tv2">$7.5M</span></div>
+      <div class="tr"><span class="tnum">10</span><span class="tn">TV Noblex Black Series 55" QLED UHD</span><div class="bt"><div class="bf" style="width:31.4%;background:#4a4480;"></div></div><span class="tv2">$7.0M</span></div>
     </div>
   </div>
 </div>
